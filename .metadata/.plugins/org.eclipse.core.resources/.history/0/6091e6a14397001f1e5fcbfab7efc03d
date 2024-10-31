@@ -1,0 +1,17 @@
+package com.binarytodecimal.converter;
+
+import java.util.Scanner;
+import java.util.logging.Logger;
+
+public class Runner {
+	
+	private static final Logger logger = LoggerUtil.getLogger();
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		BinaryToDecimalConverter converter = new BinaryToDecimalConverter();
+		logger.info("Enter binary digits to convert to decimal...");
+		converter.convertToDecimal(sc.nextLine());
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.binarytodecimal.converter;
+
+public class LoggerUtil {
+	
+	private static Logger logger = null;
+
+}

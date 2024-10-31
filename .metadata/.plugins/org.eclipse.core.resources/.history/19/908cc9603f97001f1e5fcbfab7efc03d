@@ -1,0 +1,14 @@
+package com.binarytodecimal.converter;
+
+import java.util.Scanner;
+
+public class Runner {
+	
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		BinaryToDecimalConverter converter = new BinaryToDecimalConverter();
+		System.out.println(converter.convertToDecimal("01111111"));
+	}
+
+}

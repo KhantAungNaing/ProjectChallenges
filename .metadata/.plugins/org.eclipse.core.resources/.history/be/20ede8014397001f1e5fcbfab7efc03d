@@ -1,0 +1,35 @@
+package com.binarytodecimal.converter;
+
+import java.util.logging.Logger;
+
+public class LoggerUtil {
+	
+	private static Logger logger = null;
+	
+	static {
+        try {
+            // Get a logger instance
+            logger = Logger.getLogger(LoggerUtil.class.getName());
+
+            // Set the logger level
+            logger.setLevel(Level.ALL);
+
+            // Add a ConsoleHandler
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+            consoleHandler.setLevel(Level.ALL);
+            logger.addHandler(consoleHandler);
+
+            // Optional: Add a FileHandler
+            FileHandler fileHandler = new FileHandler("app.log", true); // true to append to existing log
+            fileHandler.setLevel(Level.ALL);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+
+            // Prevent the logger from outputting to default system console
+            logger.setUseParentHandlers(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}

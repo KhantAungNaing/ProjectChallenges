@@ -1,0 +1,9 @@
+package com.binarytodecimal.converter;
+
+import java.util.logging.Logger;
+
+public class LoggerUtil {
+	
+	private static Logger logger = null;
+
+}

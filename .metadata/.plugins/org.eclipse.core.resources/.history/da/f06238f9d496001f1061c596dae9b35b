@@ -1,0 +1,31 @@
+package com.binarytodecimal.converter;
+
+public class BinaryToDecimalConverter {
+
+	// 10101101
+	public String convertToDecimal(String binary) {
+		var biArr = binary.split("");
+		int decimalValue = 0;
+
+		for (int i = biArr.length - 1; i >= 0; i--) {
+			var biDigit = Integer.parseInt(biArr[i]);
+			int powerOfTwo = 2 * i;
+			if (i == 0)
+				powerOfTwo = 1;
+			decimalValue += biDigit * powerOfTwo;
+		}
+
+		return String.valueOf(decimalValue);
+	}
+
+	private int getPowerOfTwo(int times) {
+		int powerOfTwo = 0;
+		if (times > 0) {
+			
+			times--;
+			getPowerOfTwo(times);
+		}
+		return powerOfTwo;
+
+	}
+}

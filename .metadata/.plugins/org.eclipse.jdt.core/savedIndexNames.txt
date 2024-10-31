@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+E:\Learn\Personal\ProjectsChallenge\Beginner\.metadata\.plugins\org.eclipse.jdt.core
+3982279762.index
+1673648331.index
+1865797976.index

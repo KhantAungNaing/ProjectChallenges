@@ -1,0 +1,9 @@
+package com.binarytodecimal.converter;
+
+public class BinaryToDecimalConverter {
+	
+	public static String convertToDecimal(String binary) {
+		
+	}
+
+}

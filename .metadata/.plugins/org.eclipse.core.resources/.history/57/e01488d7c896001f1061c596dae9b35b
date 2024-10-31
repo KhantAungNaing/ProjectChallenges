@@ -1,0 +1,10 @@
+package com.binarytodecimal.converter;
+
+public class BinaryToDecimalConverter {
+
+	public String convertToDecimal(String binary) {
+		int[] biArr = binary.chars().toArray();
+
+	}
+
+}

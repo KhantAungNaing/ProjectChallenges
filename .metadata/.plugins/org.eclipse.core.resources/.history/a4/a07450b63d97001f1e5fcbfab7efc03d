@@ -1,0 +1,10 @@
+package com.binarytodecimal.converter;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		BinaryToDecimalConverter converter = new BinaryToDecimalConverter();
+		System.out.println(converter.convertToDecimal("11111111"));
+	}
+
+}

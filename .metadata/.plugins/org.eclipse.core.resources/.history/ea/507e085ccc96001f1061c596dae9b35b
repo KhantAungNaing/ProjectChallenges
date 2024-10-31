@@ -1,0 +1,18 @@
+package com.binarytodecimal.converter;
+
+public class BinaryToDecimalConverter {
+
+	public String convertToDecimal(String binary) {
+		var biArr = binary.split("");
+		int decimalValue = 0;
+
+		for (int i = biArr.length - 1; i >= 0; i--) {
+			var biDigit = Integer.parseInt(biArr[i]);
+			decimalValue += biDigit * (2 * i);
+		}
+
+		return String.valueOf(decimalValue);
+
+	}
+
+}

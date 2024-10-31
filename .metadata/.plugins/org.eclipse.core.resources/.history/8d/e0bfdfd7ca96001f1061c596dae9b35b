@@ -1,0 +1,12 @@
+package com.binarytodecimal.converter;
+
+public class BinaryToDecimalConverter {
+
+	public String convertToDecimal(String binary) {
+		var ar = binary.split("");
+		
+		return "";
+
+	}
+
+}

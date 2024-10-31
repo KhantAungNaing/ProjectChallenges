@@ -1,0 +1,12 @@
+package com.binarytodecimal.converter;
+
+import java.util.logging.Logger;
+
+public class MsgLogger {
+
+	public final Logger logger = Logger.getLogger(MsgLogger.class.getName());
+
+	public static void logInfo() {
+		logger.info
+	}
+}
