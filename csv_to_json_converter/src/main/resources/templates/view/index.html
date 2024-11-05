@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV Upload or Input</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body {
+    background: linear-gradient(135deg, #f0f4f8, #d9e9f2);
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+pre {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.btn-primary, .btn-secondary {
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 15px rgba(0, 91, 187, 0.3);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 4px 15px rgba(90, 98, 104, 0.3);
+}
+
+.error-message {
+    display: none; /* Initially hide the error message */
+}
+
+textarea, input[type="file"] {
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus, input[type="file"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Upload CSV File or Input Data</h3>
+            </div>
+            <div class="card-body">
+                <!-- Form for CSV File Upload -->
+                <form action="/csvfiletojson" method="post" enctype="multipart/form-data" onsubmit="return validateFileForm()">
+                    <div class="form-group">
+                        <label for="csvFile">Choose CSV File</label>
+                        <input type="file" class="form-control-file" id="csvFile" name="file" accept=".csv">
+                    </div>
+                    <div class="error-message alert alert-danger" id="fileErrorMessage">Please select a file.</div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Convert File to JSON</button>
+                        <button type="button" class="btn btn-secondary mt-3" onclick="resetForm()">Reset</button>
+                    </div>
+                </form>
+
+                <!-- Form for Manual CSV Data Input -->
+                <form action="/csvdatatojson" method="post" onsubmit="return validateTextForm()">
+                    <div class="form-group mt-4">
+                        <label for="csvData">Enter CSV Data</label>
+                        <textarea class="form-control" id="csvData" name="data" rows="10" placeholder="Enter your CSV data here..."></textarea>
+                    </div>
+                    <div class="error-message alert alert-danger" id="textErrorMessage">Please enter CSV data.</div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Convert Text to JSON</button>
+                        <button type="button" class="btn btn-secondary mt-3" onclick="resetForm()">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4" th:if="${jsons}" id="resultSection">
+            <h2>CSV to JSON Result</h2>
+            <div>
+                <h3>JSON Output</h3>
+                <pre th:text="${jsons}"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateFileForm() {
+            const fileInput = document.getElementById("csvFile").value;
+            const fileErrorMessage = document.getElementById("fileErrorMessage");
+
+            fileErrorMessage.style.display = 'none';
+
+            if (!fileInput) {
+                fileErrorMessage.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateTextForm() {
+            const textInput = document.getElementById("csvData").value.trim();
+            const textErrorMessage = document.getElementById("textErrorMessage");
+
+            textErrorMessage.style.display = 'none';
+
+            if (!textInput) {
+                textErrorMessage.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+
+        function resetForm() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
